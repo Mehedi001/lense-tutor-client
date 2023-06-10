@@ -43,7 +43,11 @@ const Header = () => {
                             {user ? <img src={user.photoURL} /> : <img src="profile.png"/>}
                         </div>
                     </label>
-                    
+                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-white/90 rounded-box w-52">
+                        {user ? <li><a href="">{user.displayName}</a></li> : "username" }
+                        {user ? <li><a href="">{user.email}</a></li> : "usermail"}
+                        {user && <li><button onClick={logout}>Logout</button></li>}
+                    </ul>
                 </div>
             </div>
 
