@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unknown-property */
 
 import { Link } from 'react-router-dom';
-import './Registration.css'
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 
 const Registration = () => {
@@ -39,14 +39,24 @@ const Registration = () => {
         const form = event.target;
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
+        const name = (firstName +' '+ lastName)
         const email = form.email.value;
         const role = form.role.value;
         const password = form.confirmPassword.value;
         const photo = form.photo.value;
-        const userData = { firstName, lastName, email, role, password, photo, userData }
+        const userData = { name, email, role, password, photo, userData }
     }
+
     return (
         <div style={{ background: " linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('login-background2.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }} className=" p-2 lg:p-20 bg-gray-800 h-screen">
+
+
+            <Helmet>
+                <title>Lense Tutor | Registration
+                </title>
+            </Helmet>
+
+            <img className='w-32 mx-auto pt-20 my-4' src="logo.png" alt="" />
             <h1 className=" text-3xl lg:text-6xl text-center text-[tomato]/50 font-semibold">Register Now</h1>
             <form onSubmit={handleRegister} className="w-full max-w-lg mx-0 lg:my-10 lg:mx-auto">
                 <div className="flex flex-wrap lg:-mx-3 mb-6">
@@ -117,7 +127,7 @@ const Registration = () => {
                     </div>
                 </div>
                 <p className="text-orange-100 text-sm  my-4">Already Have Account <Link className='underline text-blue-500' to="/login">Login Here</Link> </p>
-                <input className="bg-[tomato]/50 btn w-full border-0 text-white rounded-md px-2 py-1" type="submit" value="Add" />
+                <input className="bg-[tomato]/50 btn w-full border-0 text-white rounded-md px-2 py-1" type="submit" value="Register" />
             </form>
 
         </div>
