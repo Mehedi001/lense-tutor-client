@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
 const Header = () => {
+    const {user, logout} = useContext(AuthContext);
     const navItem = <>
 
         <li className="text-white hover:text-yellow-400"><Link>Home</Link></li>
@@ -30,20 +33,20 @@ const Header = () => {
             </div>
             <div className="navbar-end">
 
-                <Link to="/login" className="btn">Login</Link>
+                {!user && <Link to="/login" className="btn btn-sm mr-4">Login</Link>}
 
                
 
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                         <div className="w-10 rounded-full">
-                            <img src="profile.png" />
+                            {user ? <img src={user.photoURL} /> : <img src="profile.png"/>}
                         </div>
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-white/90 rounded-box w-52">
-                        <li> <a>Profile</a></li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
+                        {user ? <li><a href="">{user.displayName}</a></li> : "username" }
+                        {user ? <li><a href="">{user.email}</a></li> : "usermail"}
+                        {user && <li><button onClick={logout}>Logout</button></li>}
                     </ul>
                 </div>
             </div>
