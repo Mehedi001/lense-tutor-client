@@ -7,6 +7,7 @@ import { updateProfile } from 'firebase/auth';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
+
 const Registration = () => {
 
     const {register, auth} = useContext(AuthContext)
@@ -73,7 +74,7 @@ const Registration = () => {
     }
 
     return (
-        <div style={{ background: " linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('login-background2.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }} className=" p-2 lg:p-20 bg-gray-800 h-screen">
+        <div style={{ background: " linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.ibb.co/q0nhbNs/login-background2.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }} className=" p-2 lg:p-20 bg-gray-800 h-screen">
 
 
             <Helmet>

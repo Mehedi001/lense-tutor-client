@@ -8,6 +8,8 @@ import { useContext, useState } from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import app from '../../firebase/firebase.config';
+import {FcGoogle} from 'react-icons/Fc'
+import { Helmet } from 'react-helmet';
 
 
 const Login = () => {
@@ -64,6 +66,9 @@ const Login = () => {
 
     return (
         <div style={{ background: " linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://i.ibb.co/F7XT2KF/login-background.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }} className='flex justify-center items-center h-screen '>
+            <Helmet>
+                <title>Lense Tutor | Login</title>
+            </Helmet>
             <form onSubmit={handleLogin} className="form_container">
                 <div className="logo_container"><img src="logo2.png" alt="" /></div>
                 <div className="title_container">
@@ -112,7 +117,9 @@ const Login = () => {
                             <path fill="#4285f4" clip-path="url(#B)" d="M48 48L17 24l-4-3 35-10z"></path>
                         </g>
                     </svg>
+                    <FcGoogle></FcGoogle>
                     <span>Sign In with Google</span>
+                    
                 </button>
 
                 <p className="text-red-600 note">{error}</p>

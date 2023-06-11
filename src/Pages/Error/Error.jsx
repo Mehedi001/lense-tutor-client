@@ -7,7 +7,7 @@ const Error = () => {
 
     
     return (
-        <div>
+        <div className="bg-gray-800 h-screen">
 
             <Helmet>
                 <title>Lense Tutor | Error</title>
