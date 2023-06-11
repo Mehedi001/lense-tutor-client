@@ -5,12 +5,13 @@ import { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { updateProfile } from 'firebase/auth';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 
 const Registration = () => {
 
-    const {register, auth} = useContext(AuthContext)
+    const { register, auth } = useContext(AuthContext)
     const [error, setError] = useState('')
     const [success, setSuccess] = useState('')
 
@@ -37,7 +38,7 @@ const Registration = () => {
         }
 
         else {
-            
+
             setError("Password Can't match")
         }
 
@@ -49,28 +50,49 @@ const Registration = () => {
         const form = event.target;
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
-        const name = (firstName +' '+ lastName);
+        const name = (firstName + ' ' + lastName);
         const email = form.email.value;
         const role = form.role.value;
         const password = form.confirmPassword.value;
         const photo = form.photo.value;
+        const newUser = { name, role, email, photo, password };
         register(email, password)
-        .then (result => {
-            const user = result.user;
-            setError('')
-            setSuccess(`${user.email} Successfully Registered`)
-            updateProfile(auth.currentUser, {displayName:name, photoURL:photo} )
-            .then (() => {
-                
-                form.reset()
+            .then(result => {
+                const user = result.user;
+                setError('')
+                setSuccess(`${user.email} Successfully Registered`)
+                updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
+                    .then(() => {
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(newUser)
+                        })
+
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'Registration Successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'Thank you'
+                                    })
+                                    form.reset('');
+                                }
+                            })
+
+
+                    })
+                    .catch((error) => {
+                        setError(error?.message)
+                    })
             })
-            .catch((error)=>{
+            .catch(error => {
                 setError(error?.message)
             })
-        })
-        .catch (error => {
-            setError(error?.message)
-        })
     }
 
     return (
@@ -90,21 +112,21 @@ const Registration = () => {
                         <label className="block uppercase tracking-wide text-orange-100 text-xs font-bold mb-2" >
                             First Name
                         </label>
-                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" name="firstName" placeholder="First Name" required />
+                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white/10" type="text" name="firstName" placeholder="First Name" required />
 
                     </div>
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-orange-100 text-xs font-bold mb-2">
                             Last Name
                         </label>
-                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white " type="text" name="lastName" placeholder="Last Name" required />
+                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white/10 " type="text" name="lastName" placeholder="Last Name" required />
 
                     </div>
                     <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-orange-100 text-xs font-bold mb-2">
                             Email
                         </label>
-                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email" name="email" placeholder="E-mail" required />
+                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white/10 focus:border-gray-500" id="grid-last-name" type="email" name="email" placeholder="E-mail" required />
                     </div>
                 </div>
 
@@ -133,13 +155,13 @@ const Registration = () => {
                         <label className="block uppercase tracking-wide text-orange-100 text-xs font-bold mb-2">
                             Password
                         </label>
-                        <input onChange={handlePasswordChange} className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="password" name="password" placeholder="Password" required />
+                        <input onChange={handlePasswordChange} className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white/10 focus:border-gray-500" id="grid-city" type="password" name="password" placeholder="Password" required />
                     </div>
                     <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-orange-100 text-xs font-bold mb-2">
                             Confirm Password
                         </label>
-                        <input onChange={handleConfirmPassword} onBlur={handleCheckPassword} className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="password" name="confirmPassword" placeholder="Confirm Password" required />
+                        <input onChange={handleConfirmPassword} onBlur={handleCheckPassword} className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white/10 focus:border-gray-500" id="grid-zip" type="password" name="confirmPassword" placeholder="Confirm Password" required />
                     </div>
                 </div>
                 <div className="flex flex-wrap lg:-mx-3 mb-6">
@@ -148,13 +170,13 @@ const Registration = () => {
                         <label className="block uppercase tracking-wide text-orange-100 text-xs font-bold mb-2">
                             Photo URL
                         </label>
-                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" name="photo" placeholder="Photo URL" />
+                        <input className="appearance-none block w-full bg-gray-600 text-gray-300 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white/10 focus:border-gray-500" type="text" name="photo" placeholder="Photo URL" />
 
                     </div>
                 </div>
                 <p className="text-orange-100 text-sm  my-4">Already Have Account <Link className='underline text-blue-500' to="/login">Login Here</Link> </p>
                 <p className="text-green-600">{success}</p>
-                        <p className="text-red-600">{error}</p>
+                <p className="text-red-600">{error}</p>
                 <input className="bg-[tomato]/50 btn w-full border-0 text-white rounded-md px-2 py-1" type="submit" value="Register" />
             </form>
 
