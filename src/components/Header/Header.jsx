@@ -9,7 +9,7 @@ const Header = () => {
     const navItem = <>
 
         <li className="text-white hover:text-yellow-400"><Link to="/">Home</Link></li>
-        <li className="text-white hover:text-yellow-400"><a>Instructor</a></li>
+        <li className="text-white hover:text-yellow-400"><Link to="/instructors">Instructor</Link></li>
         <li className="text-white hover:text-yellow-400"><a>Classes</a></li>
         <li className="text-white hover:text-yellow-400"><a>Dashboard</a></li>
     </>
