@@ -7,7 +7,7 @@ const Instructor = () => {
             <h1 className="text-4xl font-light  my-4 text-[#c58f63]">Our hard working Instructor:</h1>
             <div className="cards flex justify-center ">
     <div className="card red flex flex-row gap-6 ">
-        <div className='w-1/2'>
+        <div className='w-full lg:w-1/2'>
         <img className='w-full h-full rounded-md' src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
         </div>
         <div className='flex flex-col justify-end my-2'>
@@ -19,7 +19,7 @@ const Instructor = () => {
     </div>
     <div className="divider divider-vertical"></div> 
     <div className="card red flex flex-row gap-6 ">
-        <div className='w-1/2'>
+        <div className='w-full lg:w-1/2'>
         <img className='w-full h-full rounded-md' src="https://c1.35photo.pro/photos_temp/sizes/768/3841030_500n.jpg" alt="" />
         </div>
         <div className='flex flex-col justify-end my-2'>
@@ -31,7 +31,7 @@ const Instructor = () => {
     </div>
     <div className="divider divider-vertical"></div> 
     <div className="card red flex flex-row gap-6 ">
-        <div className='w-1/2'>
+        <div className='w-full lg:w-1/2'>
         <img className='w-full h-full rounded-md' src="https://images.squarespace-cdn.com/content/v1/5d959d560c5b607d9c8de019/1570595478597-GAK97IMZ4L6R8H0MAVTO/ashleightaylorseniorportraits-6.jpg" alt="" />
         </div>
         <div className='flex flex-col justify-end my-2'>

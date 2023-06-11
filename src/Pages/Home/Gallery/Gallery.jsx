@@ -11,7 +11,8 @@ import {FaCheckCircle} from "react-icons/Fa"
 const Gallery = () => {
     return (
         <div className="py-12 bg-gray-800 p-8">
-           <h1 className="text-4xl font-light  my-4 text-[#c58f63]">Best Photo of This Month:</h1>
+           <h1 className="text-4xl font-light my-2 text-[#c58f63]">Selected Photo of This Month:</h1>
+           <p className="text-gray-400 text-sm tracking-wider "> Selected best photo of the month | slide to view more photo</p>
             <Swiper 
         effect={"coverflow"}
         grabCursor={true}
