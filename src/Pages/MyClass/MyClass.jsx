@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BiDollarCircle } from "react-icons/Bi";
 import { FaBook, FaClock } from "react-icons/Fa";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const MyClass = () => {
+    const { user } = useContext(AuthContext);
     const [classes, setClasses] = useState([]);
+    
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch(`http://localhost:5000/usermail?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 
@@ -24,10 +27,8 @@ const MyClass = () => {
             >
                 <div style={{background: " linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7))"}} className='lg:px-8 py-4 lg:py-8'>
 
-
-
                     <div className="my-4">
-                        <h1 className="text-3xl font-semibold text-[#c58f63] underline">Total Order: {classes.length} </h1>
+                        <h1 className="text-3xl font-semibold text-[#c58f63] underline">Total Course: {classes.length} </h1>
                         <p className="font-thin text-gray-200">Check your course activity</p>
                     </div>
                     <div className="mt-32 flex flex-col lg:flex-row gap-6">
@@ -58,7 +59,7 @@ const MyClass = () => {
                                     <td>{i+1}</td>
                                     <td>{"Please Improve Quality"}</td>
                                     <td>{classs.status}</td>
-                                    <td><Link to={`/classes/${classs._id}`} className="btn btn-sm">update</Link></td>
+                                    <td><Link to={`/updateClass/${classs._id}`} className="btn btn-sm">update</Link></td>
                                 </tr>
                             )
                         }

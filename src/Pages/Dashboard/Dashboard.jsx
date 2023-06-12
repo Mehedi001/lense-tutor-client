@@ -23,11 +23,11 @@ const Dashboard = () => {
                     <div className=" w-full lg:w-1/5">
                         <div className=" py-6 px-12 bg-red-800/30 rounded-xl">
                             <h1 className="  text-orange-300 tracking-widest underline mb-6">Dashboard Info</h1>
-                            <img src={user.photoURL} alt="" />
+                            <img src={user?.photoURL} alt="" />
                             <h1 className="text-gray-400 pt-4">Dashboard Name: <br /> <span
-                                className="text-2xl text-white font-bold">{user.displayName}</span></h1>
+                                className="text-2xl text-white font-bold">{user?.displayName}</span></h1>
                             <h1 className="text-gray-400">E-mail: <br /> <span
-                                className="text-2xl text-white font-bold">{user.email}</span></h1>
+                                className="text-2xl text-white font-bold">{user?.email}</span></h1>
                         </div>
 
                         <div className="py-6 lg:h-96  flex flex-col mt-4 px-12 bg-red-800/30 rounded-xl">

@@ -12,6 +12,8 @@ import AddClass from "../Pages/AddClass/AddClass";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import Classes from "../Pages/Classes/Classes";
 import MyClass from "../Pages/MyClass/MyClass";
+import UpdateClass from "../Pages/UpdateClass/UpdateClass";
+
 
 
   const router = createBrowserRouter([
@@ -39,6 +41,13 @@ import MyClass from "../Pages/MyClass/MyClass";
         {
             path:"/classes",
             element: <Classes></Classes>
+        },
+        {
+          path: "/updateClass/:id",
+          element: <UpdateClass></UpdateClass>,
+          loader: async ({ params }) => {
+            return fetch(`http://localhost:5000/classes/${params.id}`)
+          }
         }
       ]
     },
@@ -57,7 +66,8 @@ import MyClass from "../Pages/MyClass/MyClass";
             {
                 path:'myclass',
                 element: <MyClass></MyClass>
-            }
+            },
+            
         ]
     }
   ]);
