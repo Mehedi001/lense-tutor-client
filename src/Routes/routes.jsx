@@ -36,14 +36,6 @@ import Classes from "../Pages/Classes/Classes";
             element: <Instructors></Instructors>
         },
         {
-            path:"/addclass",
-            element: <AddClass></AddClass>
-        },
-        {
-            path:"/dashboard",
-            element: <Dashboard></Dashboard>
-        },
-        {
             path:"/classes",
             element: <Classes></Classes>
         }
@@ -52,6 +44,16 @@ import Classes from "../Pages/Classes/Classes";
     {
         path:"*",
         element: <Error></Error>
+    },
+    {
+        path:"/dashboard",
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path:'addclass',
+                element: <AddClass></AddClass>
+            }
+        ]
     }
   ]);
 

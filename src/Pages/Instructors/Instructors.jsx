@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import './Instructors.css'
 import { BiLandscape } from 'react-icons/Bi';
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Parallax } from "react-parallax";
 
@@ -54,7 +53,7 @@ const Instructors = () => {
 
 
             </div>
-            <Link className="text-white" to="/addclass">Add Class</Link>
+            
         </div>
         
     </Parallax>
