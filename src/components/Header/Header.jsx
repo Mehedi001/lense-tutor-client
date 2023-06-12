@@ -10,11 +10,11 @@ const Header = () => {
 
         <li className="text-white hover:text-yellow-400"><Link to="/">Home</Link></li>
         <li className="text-white hover:text-yellow-400"><Link to="/instructors">Instructor</Link></li>
-        <li className="text-white hover:text-yellow-400"><a>Classes</a></li>
-        <li className="text-white hover:text-yellow-400"><a>Dashboard</a></li>
+        <li className="text-white hover:text-yellow-400"><Link to="classes">Classes</Link></li>
+        <li className="text-white hover:text-yellow-400"><Link to="/dashboard">Dashboard</Link></li>
     </>
     return (
-        <div className="navbar fixed z-10 bg-opacity-5 bg-base-100">
+        <div className="navbar fixed z-10 bg-opacity-70 bg-[#18110e]">
             <div className="navbar-start">
                 <div className="dropdown  ">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">

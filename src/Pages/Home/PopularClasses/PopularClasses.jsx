@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 
@@ -14,7 +13,10 @@ const PopularClasses = () => {
     useEffect (() => {
         fetch('http://localhost:5000/classes')
         .then(res => res.json())
-        .then(data => setClasses(data))
+        .then(data => {
+            const newData = data.slice(0,6)
+            setClasses(newData)
+        })
     },[])
     
     return (

@@ -5,9 +5,9 @@ const Footer = () => {
         <div>
             <footer className="footer p-24 bg-[#18110e] text-neutral-content">
   <div>
-    <img className="h-28 w-32" src="logo.png" alt="" />
+    <img className="h-28 w-40" src="logo.png" alt="" />
     <p className="text-lg footer-title">Lense Tutor<br/>Best Photography Learning Institute</p>
-    <p className="text-teal-700 hover:text-teal-500">This site copyright by Mehedi Hasan Hridoy</p>
+    <p className="text-teal-700 hover:text-teal-500">© copyright by Mehedi Hasan Hridoy</p>
   </div> 
   <div>
     <div>
