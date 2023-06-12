@@ -18,7 +18,7 @@ const Classes = () => {
         
         <Parallax
         blur={{ min: -15, max: 15 }}
-        // https://images.pexels.com/photos/4993239/pexels-photo-4993239.jpeg
+        
         bgImage={('https://images.pexels.com/photos/4992947/pexels-photo-4992947.jpeg')}
         bgImageAlt="the dog"
         strength={-200}
