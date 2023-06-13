@@ -67,11 +67,11 @@ const ReviewClass = () => {
 
                     {
                         classes.map(classs =>
-                            <div key={classs._id} className=" flex justify-between lg:h-36 bg-[#18110e]">
-                                <img className="w-40" src={classs.photo} alt="" />
+                            <div key={classs._id} className="rounded-md flex justify-between h-48 lg:h-40 bg-[#18110e]">
+                                <img className="w-1/3 lg:w-40 rounded-md" src={classs.photo} alt="" />
                                 <div className="my-2 p-4 text-[#c58f63] flex flex-col justify-between">
-                                    <h1 className=" text-xl">Course Name:  <span className="font-semibold text-2xl block"> {classs.className}</span> </h1>
-                                    <div className="lg:flex my-8 gap-4 justify-between items-center">
+                                    <h1 className="text-md lg:text-xl">Course Name:  <span className="font-semibold text-xl lg:text-2xl block w-20 lg:w-full"> {classs.className}</span> </h1>
+                                    <div className="lg:flex lg:my-8 gap-4 justify-between items-center">
                                         <p className="font-bold text-xs  text-[#c0afa3] ">Instructor Name: &nbsp;{classs.instructorName}</p>
                                         
                                         <div className="my-4 lg:my-0 flex gap-3">

@@ -4,7 +4,6 @@ import { Link, Outlet } from "react-router-dom";
 import {  FaArrowRight, FaHome, FaPlusCircle, FaUserCheck } from "react-icons/Fa";
 import { Helmet } from "react-helmet";
 import { BiBook, BiCart } from "react-icons/Bi";
-import { FcFactory } from "react-icons/Fc";
 
 
 
