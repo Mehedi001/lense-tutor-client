@@ -15,6 +15,8 @@ import MyClass from "../Pages/MyClass/MyClass";
 import UpdateClass from "../Pages/UpdateClass/UpdateClass";
 import ClassList from "../Pages/ClassList/ClassList";
 import AddedToCart from "../Pages/AddedtoCart/AddedToCart";
+import ManageUser from "../Pages/Home/ManageUser/ManageUser";
+import ReviewClass from "../Pages/ReviewClass/ReviewClass";
 
 
 
@@ -85,6 +87,14 @@ import AddedToCart from "../Pages/AddedtoCart/AddedToCart";
               loader: async ({ params }) => {
                 return fetch(`http://localhost:5000/class/${params.id}`)
               }
+            },
+            {
+              path:"manageUser",
+              element: <ManageUser></ManageUser>
+            },
+            {
+              path:"reviewClass",
+              element: <ReviewClass></ReviewClass>
             }
             
         ]

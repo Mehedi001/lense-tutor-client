@@ -10,7 +10,7 @@ const ClassList = () => {
     const {user} = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
-        const newOrder = {courseName:datapata.className, studentName:data.studentName, studentEmail:data.mail }
+        const newOrder = {courseName:datapata.className, status:"Not Paid", studentName:data.studentName, studentEmail:data.mail }
         fetch('http://localhost:5000/order', {
                             method: 'POST',
                             headers: {
@@ -32,10 +32,6 @@ const ClassList = () => {
                                 }
                             })
     };
-
-    
-
-
 
     
 
@@ -64,7 +60,7 @@ const ClassList = () => {
                 />
                 {errors.mail && <p role="alert">{errors.mail?.message}</p>}
 
-                <input className="block bg-[#c58f63] p-4 rounded-md hover:text-white cursor-pointer  hover:bg-[#8d6544]" type="submit" />
+                <input className="block bg-[#c58f63] p-4 rounded-md hover:text-white cursor-pointer  hover:bg-[#8d6544]" type="submit" value="Add to Cart" />
             </form>
             
         </div>

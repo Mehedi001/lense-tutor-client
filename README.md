@@ -31,6 +31,7 @@
 * react-router-dom
 * react-simple-typewriter
 * sweetalert2
+* Tanstack query 
 
 ### Feature of This Awesome Site-
 

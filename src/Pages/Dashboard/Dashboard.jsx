@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, Outlet } from "react-router-dom";
-import { FaHome, FaPlusCircle } from "react-icons/Fa";
+import {  FaArrowRight, FaHome, FaPlusCircle, FaUserCheck } from "react-icons/Fa";
 import { Helmet } from "react-helmet";
 import { BiBook, BiCart } from "react-icons/Bi";
+import { FcFactory } from "react-icons/Fc";
+
 
 
 const Dashboard = () => {
@@ -37,6 +39,8 @@ const Dashboard = () => {
                             <Link to="myclass"  className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <BiBook className="inline"/> &nbsp; My Class</Link>
                             <Link to="cart"  className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <BiCart className="inline"/> &nbsp; Class List</Link>
                             <Link  to="addclass" className="text-xl my-3 hover:underline flex items-center text-orange-400 font-bold"><FaPlusCircle className="inline"></FaPlusCircle> &nbsp;  Add New Class</Link>
+                            <Link  to="manageUser" className="text-xl my-3 hover:underline flex items-center text-orange-400 font-bold"><FaUserCheck className="inline"/> &nbsp;  Manage Users</Link>
+                            <Link  to="reviewClass" className="text-xl my-3 hover:underline flex items-center text-orange-400 font-bold"><FaArrowRight className="inline"/> &nbsp;  Review Classes</Link>
                         </div>
 
                     </div>

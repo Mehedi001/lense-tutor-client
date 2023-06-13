@@ -1,28 +1,27 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { useState } from "react";
-import { useEffect } from "react";
 import { Parallax } from "react-parallax";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 
 const AddedToCart = () => {
     const { user } = useContext(AuthContext);
-    const [cartList, setcartList] = useState([]);
-
-
-
     
-    useEffect(() => {
-        fetch(`http://localhost:5000/order?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                
-                setcartList(data);
-            })
-    }, [user?.email])
+    
+
+
+    const { data: cartList = [], refetch} = useQuery({
+        queryKey: ['cartList'],
+        queryFn: async() =>{
+            const res = await fetch(`http://localhost:5000/order?email=${user?.email}`);
+            const data = await res.json();
+            return data;
+        }
+    })
+    
 
     const handleDelete = _id => {
 
@@ -50,8 +49,7 @@ const AddedToCart = () => {
                                 'Your file has been deleted.',
                                 'success'
                             )
-                            const remaining = cartList.filter(cart => cart._id !== _id);
-                            setcartList(remaining);
+                            refetch();
                         }
                     }
                     )
@@ -82,9 +80,8 @@ const AddedToCart = () => {
                         <tr>
                             <th></th>
                             <th>Course Name</th>
-                            <th>Total Enroll</th>
-                            <th>Feedback</th>
-                            <th>Status</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -94,10 +91,9 @@ const AddedToCart = () => {
                                 <tr key={classs._id}>
                                     <th>{i + 1}</th>
                                     <td>{classs.courseName}</td>
-                                    <td>{i+1}</td>
-                                    <td>{"Please Improve Quality"}</td>
-                                    <td className={classs?.status==='approved'? 'text-green-600' : classs?.status==='pending'?'text-yellow-600': 'text-red-600'}>{classs.status}</td>
-                                     <td><button onClick={() => handleDelete(cartList._id)} className="btn btn-sm btn-error text-white">Delete</button></td>
+                                    <td className={classs?.status==='Paid'? 'text-green-600' : 'text-red-600'}>{classs.status}</td>
+                                     <td><button onClick={() => handleDelete(classs._id)} className="btn border-0  btn-error hover:bg-red-600 text-white">Delete</button></td>
+                                     <td><button onClick={() => handleConfirm(classs._id)} className="btn  bg-success border-0 hover:bg-green-600 text-white">Confirm</button></td>
                                 </tr>
                             )
                         }
@@ -109,8 +105,7 @@ const AddedToCart = () => {
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th></th>
-                            <th></th>
+                            
                         </tr>
                     </tfoot>
                 </table>
