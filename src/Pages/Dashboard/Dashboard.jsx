@@ -31,16 +31,16 @@ const Dashboard = () => {
                         </div>
 
                         <div className="py-6 lg:h-96  flex flex-col mt-4 px-12 bg-red-800/30 rounded-xl">
-                        <h1 className="  text-orange-300 tracking-widest underline mb-6">Manage content:</h1>
-                            <Link to="/" className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <FaHome className="inline"></FaHome> &nbsp; Homepage</Link>
-                            <Link to="myclass" className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <FaHome className="inline"></FaHome> &nbsp; My Class</Link>
-                            <Link to="addclass" className="text-xl my-3 hover:underline flex items-center text-orange-400 font-bold"><FaPlusCircle className="inline"></FaPlusCircle> &nbsp;  Add New Class</Link>
+                            <h1 className="  text-orange-300 tracking-widest underline mb-6">Manage content:</h1>
+                            <Link to="/"  className=" text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <FaHome className="inline"></FaHome> &nbsp; Homepage</Link>
+                            <Link to="myclass"  className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <FaHome className="inline"></FaHome> &nbsp; My Class</Link>
+                            <Link  to="addclass" className="text-xl my-3 hover:underline flex items-center text-orange-400 font-bold"><FaPlusCircle className="inline"></FaPlusCircle> &nbsp;  Add New Class</Link>
                         </div>
 
                     </div>
 
                     <div className="w-full lg:w-4/5 px-0 lg:px-2 rounded-lg">
-                        <Outlet> </Outlet>
+                        <Outlet></Outlet>
                     </div>
                 </div>
             </div>

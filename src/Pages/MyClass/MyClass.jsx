@@ -29,7 +29,7 @@ const MyClass = () => {
 
                     <div className="my-4">
                         <h1 className="text-3xl font-semibold text-[#c58f63] underline">Total Course: {classes.length} </h1>
-                        <p className="font-thin text-gray-200">Check your course activity</p>
+                        <p className="font-thin text-gray-200">Check your activity</p>
                     </div>
                     <div className="mt-32 flex flex-col lg:flex-row gap-6">
                         <h1 className="font-semibold p-4 bg-red-700/40 inline-block rounded-lg text-white text-2xl"><FaClock className="inline-block"/> Remaining Seats: 32  </h1>
@@ -58,8 +58,8 @@ const MyClass = () => {
                                     <td>{classs.className}</td>
                                     <td>{i+1}</td>
                                     <td>{"Please Improve Quality"}</td>
-                                    <td>{classs.status}</td>
-                                    <td><Link to={`/updateClass/${classs._id}`} className="btn btn-sm">update</Link></td>
+                                    <td className={classs?.status==='approved'? 'text-green-600' : classs?.status==='pending'?'text-yellow-600': 'text-red-600'}>{classs.status}</td>
+                                    <td><Link to={`/dashboard/updateClass/${classs._id}`} className="btn btn-sm">update</Link></td>
                                 </tr>
                             )
                         }

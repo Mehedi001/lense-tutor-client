@@ -13,6 +13,8 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Classes from "../Pages/Classes/Classes";
 import MyClass from "../Pages/MyClass/MyClass";
 import UpdateClass from "../Pages/UpdateClass/UpdateClass";
+import ClassList from "../Pages/ClassList/ClassList";
+
 
 
 
@@ -43,12 +45,13 @@ import UpdateClass from "../Pages/UpdateClass/UpdateClass";
             element: <Classes></Classes>
         },
         {
-          path: "/updateClass/:id",
-          element: <UpdateClass></UpdateClass>,
+          path:"/classlist/:id",
+          element: <ClassList></ClassList>,
           loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/classes/${params.id}`)
+            return fetch(`http://localhost:5000/class/${params.id}`)
           }
         }
+        
       ]
     },
     {
@@ -67,6 +70,13 @@ import UpdateClass from "../Pages/UpdateClass/UpdateClass";
                 path:'myclass',
                 element: <MyClass></MyClass>
             },
+            {
+              path: "updateClass/:id",
+              element: <UpdateClass></UpdateClass>,
+              loader: async ({ params }) => {
+                return fetch(`http://localhost:5000/class/${params.id}`)
+              }
+            }
             
         ]
     }

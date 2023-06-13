@@ -27,7 +27,7 @@ const Banner = () => {
                          className=" text-3xl lg:text-6xl font-bold text-white ">
                             <Typewriter
                          words={['Best Photography']}
-                         loop={5}
+                         loop={2}
                          cursor
                          cursorStyle='_'
                          typeSpeed={70}
@@ -36,7 +36,7 @@ const Banner = () => {
                              <span className="text-[#c58f63]">
                         <Typewriter
                          words={['Tutor']}
-                         loop={0}
+                         loop={2}
                          cursor
                          cursorStyle='_'
                          typeSpeed={70}

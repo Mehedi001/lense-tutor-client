@@ -7,10 +7,11 @@ export const UpdateClass = () => {
 
     const location = useLocation();
     const navigate = useNavigate();
-    const from = location.state?.from?.pathname || "/myclass";
+    const from = location.state?.from?.pathname || "/dashboard/myclass";
 
 
     const data = useLoaderData()
+    
   
 
 
@@ -64,7 +65,7 @@ export const UpdateClass = () => {
 
 
                     <div className="my-4 text-center">
-                        <h1 className="text-3xl font-semibold text-[#c58f63] underline">Add New Courses</h1>
+                        <h1 className="text-3xl font-semibold text-[#c58f63] underline">Update: &nbsp; {data.name}</h1>
                         <p className="font-thin text-gray-200">Add your course class details Below:</p>
                     </div>
                     <div className="section_form">
