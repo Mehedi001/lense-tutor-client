@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { Parallax } from "react-parallax";
 import Swal from "sweetalert2";
 
 
@@ -127,8 +126,8 @@ const ManageUsers = () => {
                                                 <th>{i + 1}</th>
                                                 <td>{user.name}</td>
                                                 <td>{user.role}</td>
-                                                <td>{user.role != 'Student' && <button onClick={() => handleUpdateUser(user._id, user.role)} className="btn   bg-green-600 border-0 hover:bg-green-700 text-white">{user?.role==='Instructor' ? 'Make Admin' : 'Make Instructor'}</button>}</td>
-                                                <td><button onClick={() => handleDelete(user._id)} className="btn border-0  bg-red-600 hover:bg-red-700 text-white">Delete User</button></td>
+                                                <td>{user.role != 'Student' && <button onClick={() => handleUpdateUser(user._id, user.role)} className="btn   bg-amber-500 border-0 hover:bg-amber-600 text-white">{user?.role==='Instructor' ? 'Make Admin' : 'Make Instructor'}</button>}</td>
+                                                <td><button onClick={() => handleDelete(user._id)} className="btn border-0  bg-red-600 hover:bg-red-700 text-white"> Delete User</button></td>
 
                                             </tr>
                                 )
