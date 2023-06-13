@@ -14,6 +14,9 @@ import Classes from "../Pages/Classes/Classes";
 import MyClass from "../Pages/MyClass/MyClass";
 import UpdateClass from "../Pages/UpdateClass/UpdateClass";
 import ClassList from "../Pages/ClassList/ClassList";
+import AddedToCart from "../Pages/AddedtoCart/AddedToCart";
+
+
 
 
 
@@ -50,7 +53,8 @@ import ClassList from "../Pages/ClassList/ClassList";
           loader: async ({ params }) => {
             return fetch(`http://localhost:5000/class/${params.id}`)
           }
-        }
+        },
+        
         
       ]
     },
@@ -59,7 +63,7 @@ import ClassList from "../Pages/ClassList/ClassList";
         element: <Error></Error>
     },
     {
-        path:"/dashboard",
+        path:"dashboard",
         element: <Dashboard></Dashboard>,
         children: [
             {
@@ -70,6 +74,11 @@ import ClassList from "../Pages/ClassList/ClassList";
                 path:'myclass',
                 element: <MyClass></MyClass>
             },
+            {
+              path:"cart",
+              element: <AddedToCart></AddedToCart>
+            },
+            
             {
               path: "updateClass/:id",
               element: <UpdateClass></UpdateClass>,

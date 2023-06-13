@@ -3,6 +3,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, Outlet } from "react-router-dom";
 import { FaHome, FaPlusCircle } from "react-icons/Fa";
 import { Helmet } from "react-helmet";
+import { BiBook, BiCart } from "react-icons/Bi";
 
 
 const Dashboard = () => {
@@ -33,7 +34,8 @@ const Dashboard = () => {
                         <div className="py-6 lg:h-96  flex flex-col mt-4 px-12 bg-red-800/30 rounded-xl">
                             <h1 className="  text-orange-300 tracking-widest underline mb-6">Manage content:</h1>
                             <Link to="/"  className=" text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <FaHome className="inline"></FaHome> &nbsp; Homepage</Link>
-                            <Link to="myclass"  className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <FaHome className="inline"></FaHome> &nbsp; My Class</Link>
+                            <Link to="myclass"  className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <BiBook className="inline"/> &nbsp; My Class</Link>
+                            <Link to="cart"  className="text-xl hover:underline flex items-center my-3 text-orange-400 font-bold"> <BiCart className="inline"/> &nbsp; Class List</Link>
                             <Link  to="addclass" className="text-xl my-3 hover:underline flex items-center text-orange-400 font-bold"><FaPlusCircle className="inline"></FaPlusCircle> &nbsp;  Add New Class</Link>
                         </div>
 
