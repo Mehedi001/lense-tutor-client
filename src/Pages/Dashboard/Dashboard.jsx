@@ -31,6 +31,7 @@ const Dashboard = () => {
                 <div className="px-3 py-6 flex flex-col gap-4 lg:flex-row">
                     <div className=" w-full lg:w-1/5">
                         <div className="py-6 flex flex-col px-12 bg-red-800/30 rounded-xl lg:h-screen">
+                            <img className="my-8 lg:my-20" src="/public/logo.png" alt="" />
                             <h1 className="  text-orange-300 tracking-widest underline mb-6">Manage content:</h1>
 
                             {
