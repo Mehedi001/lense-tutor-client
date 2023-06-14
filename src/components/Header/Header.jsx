@@ -11,7 +11,9 @@ const Header = () => {
         <li className="text-white "><Link to="/">Home</Link></li>
         <li className="text-white "><Link to="/instructors">Instructor</Link></li>
         <li className="text-white "><Link to="classes">Classes</Link></li>
-        <li className="text-white "><Link to="/dashboard/myclass">Dashboard</Link></li>
+        {
+            user && <li className="text-white "><Link to="/dashboard/myclass">Dashboard</Link></li>
+        }
     </>
     return (
         <div className="navbar fixed z-10 bg-opacity-70 bg-[#18110e]">

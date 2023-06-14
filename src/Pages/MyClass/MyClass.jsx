@@ -57,7 +57,7 @@ const MyClass = () => {
                                     <th>{i + 1}</th>
                                     <td>{classs.className}</td>
                                     <td>{i+1}</td>
-                                    <td>{"Please Improve Quality"}</td>
+                                    <td>{classs.feedback}</td>
                                     <td className={classs?.status==='approved'? 'text-green-600' : classs?.status==='pending'?'text-yellow-600': 'text-red-600'}>{classs.status}</td>
                                     <td><Link to={`/dashboard/updateClass/${classs._id}`} className="btn btn-sm">update</Link></td>
                                 </tr>

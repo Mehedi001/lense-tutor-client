@@ -49,21 +49,41 @@ const ReviewClass = () => {
     }
 
 
-    const feedback = async () => {
+    const feedback = async (id) => {
 
         const { value: text } = await Swal.fire({
             input: 'textarea',
             inputLabel: 'Feedback',
             inputPlaceholder: 'Type your feedback here...',
             inputAttributes: {
-              'aria-label': 'Type your message here'
+                'aria-label': 'Type your message here'
             },
             showCancelButton: true
-          })
-          
-          if (text) {
-            Swal.fire(text)
-          }
+        })
+
+        if (text) {
+            const updatedFeedback={feedback:text}
+            fetch(`http://localhost:5000/feedbackStatus/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updatedFeedback)
+            })
+
+            .then(res => res.json())
+            .then(data => {
+
+
+                if (data.modifiedCount > 0) {
+                    Swal.fire(text)
+                    refetch();
+                }
+            })
+
+
+            
+        }
     }
 
 
@@ -111,7 +131,7 @@ const ReviewClass = () => {
                                             <td>{user.availableSeats}</td>
 
                                             <td>{user.status === 'pending' ? <button onClick={() => approved(user._id)} className="btn border-0 btn-sm  bg-green-600 hover:bg-green-800 text-white"> Approved</button>
-                                              : <button disabled className="btn border-0 btn-sm  bg-green-600 hover:bg-green-800 text-white"> Approved</button>}</td>
+                                                : <button disabled className="btn border-0 btn-sm  bg-green-600 hover:bg-green-800 text-white"> Approved</button>}</td>
                                             <td>{user.status === 'pending' ? <button onClick={() => deny(user._id)} className="btn border-0  bg-red-600 hover:bg-red-800 text-white btn-sm"> Deny</button> : <button disabled className="btn border-0  bg-red-600 hover:bg-red-800 text-white btn-sm"> Deny</button>}</td>
                                             <td><button onClick={() => feedback(user._id)} className="btn btn-sm border-0  bg-blue-500 hover:bg-blue-800 text-white"> Send Feedback</button></td>
 
