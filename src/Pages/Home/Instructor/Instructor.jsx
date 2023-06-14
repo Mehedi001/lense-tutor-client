@@ -2,17 +2,25 @@ import { useEffect, useState } from 'react';
 import './Instructor.css'
 import { BiLandscape } from 'react-icons/Bi';
 
+
 const Instructor = () => {
     const [instructors, setInstructors] = useState([]);
+   
+    
 
     useEffect(() => {
+        
         fetch('http://localhost:5000/users?role=instructor')
+            
             .then(res => res.json())
             .then(data => {
                 const newData = data.slice(0, 6);
                 setInstructors(newData);
+                
             })
     }, [])
+
+   
 
     return (
         <div className='bg-gray-800 p-8'>

@@ -1,20 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import { ImSpinner4 } from "react-icons/im";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 
 const Classes = () => {
     const [classes, setClasses] = useState([]);
+    const {loading, setLoading} = useContext(AuthContext);
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        setLoading(true)
+        fetch('http://localhost:5000/classes?')
             .then(res => res.json())
             .then(data => {
 
                 setClasses(data);
+                setLoading(false)
             })
     }, [])
+    if(loading){
+        return (<div className="h-screen bg-[#18110e]"><ImSpinner4 className='text-9xl h-screen text-red-600 mx-auto animate-spin '/></div>);
+    }
+    
     return (
 
         <Parallax

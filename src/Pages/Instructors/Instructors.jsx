@@ -3,17 +3,26 @@ import './Instructors.css'
 import { BiLandscape } from 'react-icons/Bi';
 import { Helmet } from "react-helmet";
 import { Parallax } from "react-parallax";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { ImSpinner4 } from "react-icons/im";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
+    const {loading, setLoading} = useContext(AuthContext);
     useEffect(() => {
+        setLoading(true)
         fetch('http://localhost:5000/users?role=instructor')
             .then(res => res.json())
             .then(data => {
                 
                 setInstructors(data);
+                setLoading(false)
             })
     }, [])
+    if(loading){
+        return (<div className="h-screen bg-[#18110e]"><ImSpinner4 className='text-9xl h-screen text-red-600 mx-auto animate-spin '/></div>);
+    }
     return (
         
         <Parallax
