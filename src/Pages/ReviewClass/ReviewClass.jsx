@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ReviewClass = () => {
@@ -8,38 +7,33 @@ const ReviewClass = () => {
 
     // transtek query 
     const { data: classes = [], refetch } = useQuery({
-        queryKey: ['users'],
+        queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/classesPending');
+            const res = await fetch('http://localhost:5000/allClass');
             const data = await res.json();
             return data;
         }
     })
-    refetch()
 
-
-    const handleUpdateStatus = (id, status) => {
-
-        
-        if (status==='pending') {
-            const updateStatus={status:'approved'}
-            return updateClass(updateStatus, id);
- 
-        
+    const approved = (id) => {
+        const updatedStatus = { status: 'approved' }
+        return updateStatus(updatedStatus, id)
+    }
+    const deny = (id) => {
+        const updatedStatus = { status: 'denied' }
+        return updateStatus(updatedStatus, id)
     }
 
-    const updateClass = (updateStatus, id) => {
-        fetch(`http://localhost:5000/classes/${id}`, {
+    const updateStatus = (updatedStatus, id) => {
+        fetch(`http://localhost:5000/classStatus/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(updateStatus)
+            body: JSON.stringify(updatedStatus)
         })
             .then(res => res.json())
             .then(data => {
-
-                
 
 
                 if (data.modifiedCount > 0) {
@@ -54,44 +48,100 @@ const ReviewClass = () => {
             })
     }
 
+
+    const feedback = async () => {
+
+        const { value: text } = await Swal.fire({
+            input: 'textarea',
+            inputLabel: 'Feedback',
+            inputPlaceholder: 'Type your feedback here...',
+            inputAttributes: {
+              'aria-label': 'Type your message here'
+            },
+            showCancelButton: true
+          })
+          
+          if (text) {
+            Swal.fire(text)
+          }
     }
+
+
     return (
-        
-            <div>
-                
-                <div className="text-center tracking-wide">
-                    <h1 className="text-2xl lg:text-3xl font-semibold text-[#c58f63] underline">Pending Class List: {classes.length}</h1>
-                    <p className="font-mono text-gray-200">Approve to show website if click Deny it will not show</p>
+
+        <div>
+
+            <div className='lg:px-8 '>
+
+                <div>
+                    <h1 className="text-3xl font-semibold text-[#c58f63] underline">Total Pending Classes: {classes.length} </h1>
+                    <p className="font-thin text-gray-200">Manage classes</p>
                 </div>
-                <div className="cardss w-full my-8 lg:w-2/5 mx-auto flex flex-col ">
-
-                    {
-                        classes.map(classs =>
-                            <div key={classs._id} className="rounded-md flex justify-between h-48 lg:h-40 bg-[#18110e]">
-                                <img className="w-1/3 lg:w-40 rounded-md" src={classs.photo} alt="" />
-                                <div className="my-2 p-4 text-[#c58f63] flex flex-col justify-between">
-                                    <h1 className="text-md lg:text-xl">Course Name:  <span className="font-semibold text-xl lg:text-2xl block w-20 lg:w-full"> {classs.className}</span> </h1>
-                                    <div className="lg:flex lg:my-8 gap-4 justify-between items-center">
-                                        <p className="font-bold text-xs  text-[#c0afa3] ">Instructor Name: &nbsp;{classs.instructorName}</p>
-                                        
-                                        <div className="my-4 lg:my-0 flex gap-3">
-                                        <button onClick={() => handleUpdateStatus(classes._id, classes.status)} className="btn-sm bg-[#32b438] hover:bg-[#27912d] hover:text-white text-black flex justify-center items-center rounded-md" >Approved</button>
-                                        <Link to={`/classlist/${classs._id}`} className="btn-sm bg-[#dd3838] hover:bg-[#b32929] hover:text-white text-black flex justify-center items-center rounded-md">Deny</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        )
-                       
-                    }
 
 
+                <div className="bg-white/80 rounded-xl  my-4">
+                    <div className="overflow-x-auto">
+                        <table className="table table-compact w-full ">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Class Image</th>
+                                    <th>Class Title</th>
+                                    <th>Instructor Name</th>
+                                    <th>Instructor Email</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Seats</th>
+                                    <th>Action</th>
+                                    <th>Action</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    classes.map((user, i) =>
+                                        <tr key={user._id}>
+                                            <th>{i + 1}</th>
+                                            <td><img className="w-20 h-16 rounded-md border border-2 border-red-700" src={user.photo} alt="" /></td>
+                                            <td>{user.className}</td>
+                                            <td>{user.instructorName}</td>
+                                            <td>{user.email}</td>
+                                            <td>${user.price}</td>
+                                            <td>{user.status}</td>
+                                            <td>{user.availableSeats}</td>
 
+                                            <td>{user.status === 'pending' ? <button onClick={() => approved(user._id)} className="btn border-0 btn-sm  bg-green-600 hover:bg-green-800 text-white"> Approved</button>
+                                              : <button disabled className="btn border-0 btn-sm  bg-green-600 hover:bg-green-800 text-white"> Approved</button>}</td>
+                                            <td>{user.status === 'pending' ? <button onClick={() => deny(user._id)} className="btn border-0  bg-red-600 hover:bg-red-800 text-white btn-sm"> Deny</button> : <button disabled className="btn border-0  bg-red-600 hover:bg-red-800 text-white btn-sm"> Deny</button>}</td>
+                                            <td><button onClick={() => feedback(user._id)} className="btn btn-sm border-0  bg-blue-500 hover:bg-blue-800 text-white"> Send Feedback</button></td>
 
+                                        </tr>
+                                    )
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
+
             </div>
+        </div>
 
-       
+
     );
 };
 
