@@ -32,7 +32,7 @@
 * react-simple-typewriter
 * sweetalert2
 * TanStack query 
-* react-awesome-reveal
+* react-awesome-reveal(Homepage, Instructor Page, Classes Page)
 
 ### Feature of This Awesome Site-
 
@@ -59,7 +59,7 @@
 
 *   from admin side , admin control full site, admin manage all user delete, update instructor to admin role or delete. everything control a admin. also instructor new courses approve by admin, without admin approve not showing new classes in main website class section.
 
-
+* Dark Theme Implement
 
 
 ### Thank You

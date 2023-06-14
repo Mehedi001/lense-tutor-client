@@ -21,7 +21,7 @@ const PopularClasses = () => {
     },[])
     
     return (
-        <div className="py-12 bg-gray-800 px-8">
+        <div className="py-12 px-8">
             <h1 className="text-4xl font-light  my-4 text-[#c58f63]">Our Popular Classes:</h1>
             <Slide direction="right">
             <Swiper

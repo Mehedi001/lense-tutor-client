@@ -1,7 +1,7 @@
 
 import {
-    createBrowserRouter
-  } from "react-router-dom";
+  createBrowserRouter
+} from "react-router-dom";
 import Main from "../Layout/Main";
 import Error from "../Pages/Error/Error";
 import Login from "../Pages/Login/Login";
@@ -27,87 +27,86 @@ import StudentRoute from "./StudentRoute/StudentRoute";
 
 
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>
+      },
+      {
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main> ,
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Registration></Registration>
+      },
+      {
+        path: "/instructors",
+        element: <Instructors></Instructors>
+      },
+      {
+        path: "/classes",
+        element: <Classes></Classes>
+      },
+      {
+        path: "/classlist/:id",
+        element: <PrivateRoute><StudentRoute><ClassList></ClassList></StudentRoute></PrivateRoute>,
+        loader: async ({ params }) => {
+          return fetch(`https://lense-tutor-server.vercel.app/class/${params.id}`)
+        }, 
+        }
+
+
+]
+    },
+{
+  path: "*",
+    element: <Error></Error>
+},
+{
+  path: "dashboard",
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
-            path: "/",
-            element: <Home></Home>
+          path: 'info',
+          element: <PrivateRoute><Info></Info></PrivateRoute>
         },
         {
-            
-                path:"/login",
-                element: <Login></Login>  
+          path: 'addclass',
+          element: <PrivateRoute><InstructorRoute><AddClass></AddClass></InstructorRoute></PrivateRoute>
         },
         {
-            path:"/register",
-            element: <Registration></Registration>
+          path: 'myclass',
+          element: <PrivateRoute><InstructorRoute><MyClass></MyClass></InstructorRoute></PrivateRoute>
         },
         {
-            path:"/instructors",
-            element: <Instructors></Instructors>
+          path: "cart",
+          element: <PrivateRoute><AddedToCart></AddedToCart></PrivateRoute>
         },
+
         {
-            path:"/classes",
-            element: <Classes></Classes>
-        },
-        {
-          path:"/classlist/:id",
-          element: <PrivateRoute><StudentRoute><ClassList></ClassList></StudentRoute></PrivateRoute>,
+          path: "updateClass/:id",
+          element: <PrivateRoute><UpdateClass></UpdateClass></PrivateRoute>,
           loader: async ({ params }) => {
-            return fetch(`http://localhost:5000/class/${params.id}`)
+            return fetch(`https://lense-tutor-server.vercel.app/class/${params.id}`)
           }
         },
-        
-        
+        {
+          path: "manageUser",
+          element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
+        },
+        {
+          path: "reviewClass",
+          element: <PrivateRoute><AdminRoute><ReviewClass></ReviewClass></AdminRoute></PrivateRoute>
+        }
+
       ]
-    },
-    {
-        path:"*",
-        element: <Error></Error>
-    },
-    {
-        path:"dashboard",
-        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-        children: [
-            {
-                path:'info',
-                element: <PrivateRoute><Info></Info></PrivateRoute>
-            },
-            {
-                path:'addclass',
-                element: <PrivateRoute><InstructorRoute><AddClass></AddClass></InstructorRoute></PrivateRoute>
-            },
-            {
-                path:'myclass',
-                element: <PrivateRoute><InstructorRoute><MyClass></MyClass></InstructorRoute></PrivateRoute>
-            },
-            {
-              path:"cart",
-              element: <PrivateRoute><AddedToCart></AddedToCart></PrivateRoute>
-            },
-            
-            {
-              path: "updateClass/:id",
-              element: <PrivateRoute><UpdateClass></UpdateClass></PrivateRoute>,
-              loader: async ({ params }) => {
-                return fetch(`http://localhost:5000/class/${params.id}`)
-              }
-            },
-            {
-              path:"manageUser",
-              element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
-            },
-            {
-              path:"reviewClass",
-              element: <PrivateRoute><AdminRoute><ReviewClass></ReviewClass></AdminRoute></PrivateRoute>
-            }
-        
-        ]
-    }
+}
   ]);
 
 

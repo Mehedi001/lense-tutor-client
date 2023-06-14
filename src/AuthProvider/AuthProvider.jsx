@@ -14,6 +14,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [themeChange, setThemeChange] = useState(false);
 
     const register = (email, password) => {
         setLoading(true);
@@ -40,6 +41,8 @@ const AuthProvider = ({ children }) => {
         }
     },[]);
 
+
+
     
 
     const authInfo = {
@@ -49,7 +52,9 @@ const AuthProvider = ({ children }) => {
         logout,
         auth,
         loading,
-        setLoading
+        setLoading,
+        themeChange,
+        setThemeChange
     }
     return (
         <AuthContext.Provider value={authInfo}>

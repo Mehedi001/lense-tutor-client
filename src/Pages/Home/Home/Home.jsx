@@ -3,18 +3,23 @@ import Banner from "../Banner/Banner";
 import Gallery from "../Gallery/Gallery";
 import Instructor from "../Instructor/Instructor";
 import PopularClasses from "../PopularClasses/PopularClasses";
+import { useContext } from "react";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
+
 
 
 const Home = () => {
+    const {themeChange}=useContext(AuthContext);
+
     return (
-        <div>
+        <div className={themeChange ? "bg-red-950" : "bg-gray-800"}>
             <Helmet>
                 <title>Lense Tutor | Home</title>
             </Helmet>
             <Banner></Banner>
-           <PopularClasses></PopularClasses> 
-           <Instructor></Instructor>
-           <Gallery></Gallery>
+            <PopularClasses></PopularClasses>
+            <Instructor></Instructor>
+            <Gallery></Gallery>
         </div>
     );
 };

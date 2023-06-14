@@ -11,7 +11,7 @@ import { Slide } from "react-awesome-reveal";
 
 const Gallery = () => {
     return (
-        <div className="py-12 bg-gray-800 p-8">
+        <div className="py-12 p-8">
            <h1 className="text-4xl font-light my-2 text-[#c58f63]">Selected Photo of This Month:</h1>
            <p className="text-gray-400 text-sm tracking-wider pb-6 "> Selected best photo of the month | slide to view more photo</p>
             <Slide direction="right">

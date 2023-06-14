@@ -25,7 +25,7 @@ const Instructor = () => {
 
     return (
         <Fade>
-            <div className='bg-gray-800 p-8'>
+            <div className='p-8'>
             <h1 className="text-4xl font-light  my-4 text-[#c58f63]">Our hard working Instructor:</h1>
             <div className="cards flex flex-wrap justify-center ">
 
