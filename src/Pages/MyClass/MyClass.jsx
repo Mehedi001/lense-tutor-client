@@ -1,7 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useContext, useEffect, useState } from "react";
-import { BiDollarCircle } from "react-icons/Bi";
-import { FaBook, FaClock } from "react-icons/Fa";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";

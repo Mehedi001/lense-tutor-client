@@ -47,7 +47,7 @@ const Header = () => {
             </div>
             <div className="navbar-end">
                 
-                <label className="swap swap-rotate mx-4 bg-gray-800 p-1  rounded-full ">
+                <label className={themeChange ? "swap swap-rotate mx-4 bg-gray-800 p-1  rounded-full": "swap swap-rotate mx-4 bg-red-800 p-1  rounded-full"}>
 
                     {/* this hidden checkbox controls the state */}
                     <input  onClick={changeColor} type="checkbox" />
