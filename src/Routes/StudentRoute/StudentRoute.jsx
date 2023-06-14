@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ImSpinner4 } from "react-icons/im";
