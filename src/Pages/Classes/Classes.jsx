@@ -4,6 +4,9 @@ import { ImSpinner4 } from "react-icons/im";
 import { Parallax } from "react-parallax";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { Zoom } from "react-awesome-reveal";
+
+
 
 
 
@@ -12,7 +15,7 @@ const Classes = () => {
     const {loading, setLoading} = useContext(AuthContext);
     useEffect(() => {
         setLoading(true)
-        fetch('http://localhost:5000/classes?')
+        fetch('https://lense-tutor-server.vercel.app/classes?')
             .then(res => res.json())
             .then(data => {
 
@@ -46,7 +49,8 @@ const Classes = () => {
 
                     {
                         classes.map(classs =>
-                            <div key={classs._id} className="lg:w-96 bg-[#18110e]">
+                            <Zoom key={classs._id}>
+                                <div  className="lg:w-96 bg-[#18110e]">
                                 <img className="w-full h-64  mx-auto" src={classs.photo} alt="" />
                                 <div className="my-2 p-4 text-[#c58f63] flex flex-col justify-between">
                                     <h1 className=" text-xl">Course Name:  <span className="font-semibold text-2xl block"> {classs.className}</span> </h1>
@@ -58,6 +62,7 @@ const Classes = () => {
                                     </div>
                                 </div>
                             </div>
+                            </Zoom>
                         )
                     }
 

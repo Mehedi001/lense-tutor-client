@@ -7,6 +7,7 @@ import { BiBook, BiCart } from "react-icons/Bi";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import useStudent from "../../Hooks/useStudent";
+import { Slide } from "react-awesome-reveal";
 
 
 
@@ -26,10 +27,10 @@ const Dashboard = () => {
             <div className="bg-red-900">
                 <h1 className="uppercase py-8 font-bold text-4xl lg:text-6xl text-center text-orange-100"> Dashboard</h1>
             </div>
-            <div className="bg-red-950/60">
-                <div className="px-3 py-6 flex flex-col lg:flex-row">
+            <div className="bg-red-950/60 ">
+                <div className="px-3 py-6 flex flex-col gap-4 lg:flex-row">
                     <div className=" w-full lg:w-1/5">
-                        <div className="py-6   flex flex-col px-12 bg-red-800/30 rounded-xl h-screen">
+                        <div className="py-6 flex flex-col px-12 bg-red-800/30 rounded-xl lg:h-screen">
                             <h1 className="  text-orange-300 tracking-widest underline mb-6">Manage content:</h1>
 
                             {
@@ -62,7 +63,9 @@ const Dashboard = () => {
                     </div>
 
                     <div className="w-full lg:w-4/5 px-0 lg:px-2 rounded-lg">
+                        <Slide direction="right">
                         <Outlet></Outlet>
+                        </Slide>
                     </div>
                 </div>
             </div>

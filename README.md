@@ -1,7 +1,7 @@
 ### Site Name & Live Link
 
 * SiteName: Lens Tutor
-* LiveSite Link: 
+* LiveSite Link: https://lense-tutor.web.app
 
 
 ### Used technology
@@ -32,6 +32,7 @@
 * react-simple-typewriter
 * sweetalert2
 * TanStack query 
+* react-awesome-reveal
 
 ### Feature of This Awesome Site-
 

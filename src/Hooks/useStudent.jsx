@@ -9,7 +9,7 @@ const useStudent = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/student?email=${email}`)
+            fetch(`https://lense-tutor-server.vercel.app/users/student?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     setIsStudent(data.isStudent)

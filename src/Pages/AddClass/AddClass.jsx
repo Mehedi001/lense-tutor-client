@@ -27,7 +27,7 @@ const AddClass = () => {
         const newClass = { className, status, photo, email, instructorName, price, availableSeats, description }
 
 
-        fetch('http://localhost:5000/classes', {
+        fetch('https://lense-tutor-server.vercel.app/classes', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -63,7 +63,7 @@ const Registration = () => {
                 setSuccess(`${user.email} Successfully Registered`)
                 updateProfile(auth.currentUser, { displayName: name, photoURL: photo })
                     .then(() => {
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://lense-tutor-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

@@ -6,13 +6,14 @@ import { Parallax } from "react-parallax";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { ImSpinner4 } from "react-icons/im";
+import { Zoom } from "react-awesome-reveal";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
     const {loading, setLoading} = useContext(AuthContext);
     useEffect(() => {
         setLoading(true)
-        fetch('http://localhost:5000/users?role=instructor')
+        fetch('https://lense-tutor-server.vercel.app/users?role=instructor')
             .then(res => res.json())
             .then(data => {
                 
@@ -44,7 +45,8 @@ const Instructors = () => {
 
             {
                 instructors.map (instructor => 
-                <div key={instructor._id} className="cards red flex flex-row gap-6 ">
+                <Zoom key={instructor._id}>
+                    <div  className="cards red flex flex-row gap-6 ">
                 <div className='w-full lg:w-1/2'>
                 <img className='w-full h-full rounded-md' src={instructor.photo} alt="" />
                 </div>
@@ -55,7 +57,8 @@ const Instructors = () => {
                     <p className='text-sm font-thin mb-2 text-gray-300'>E-mail:&nbsp;{instructor.email}</p>
                     <p className='text-sm font-mono'>Total 450+ Student</p>
                 </div>
-            </div>)
+            </div>
+                </Zoom>)
             }
 
 

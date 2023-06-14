@@ -11,7 +11,7 @@ const MyClass = () => {
     const [classes, setClasses] = useState([]);
     
     useEffect(() => {
-        fetch(`http://localhost:5000/usermail?email=${user?.email}`)
+        fetch(`https://lense-tutor-server.vercel.app/usermail?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 

@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { FreeMode, Pagination } from "swiper";
 import { useEffect, useState } from "react";
+import { Slide } from "react-awesome-reveal";
 
 
 const PopularClasses = () => {
@@ -11,7 +12,7 @@ const PopularClasses = () => {
     const [classes, setClasses] = useState([]);
 
     useEffect (() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://lense-tutor-server.vercel.app/classes')
         .then(res => res.json())
         .then(data => {
             const newData = data.slice(0,6)
@@ -22,6 +23,7 @@ const PopularClasses = () => {
     return (
         <div className="py-12 bg-gray-800 px-8">
             <h1 className="text-4xl font-light  my-4 text-[#c58f63]">Our Popular Classes:</h1>
+            <Slide direction="right">
             <Swiper
         slidesPerView={4}
         spaceBetween={30}
@@ -77,6 +79,7 @@ const PopularClasses = () => {
    }
         
       </Swiper>
+            </Slide>
         </div>
     );
 };

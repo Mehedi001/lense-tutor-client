@@ -4,6 +4,7 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import { Typewriter } from 'react-simple-typewriter'
+import { Bounce} from "react-awesome-reveal";
 
 
 
@@ -24,28 +25,30 @@ const Banner = () => {
                     <img className="opacity-50 " src="https://i.ibb.co/pR4qcM2/1.jpg" alt="" />
                     <div className="absolute top-1/3 lg:top-[50%] text-center left-2 lg:left-[2%]">
                         <h1
-                         className=" text-3xl lg:text-6xl font-bold text-white ">
+                            className=" text-3xl lg:text-6xl font-bold text-white ">
                             <Typewriter
-                         words={['Best Photography']}
-                         loop={2}
-                         cursor
-                         cursorStyle='_'
-                         typeSpeed={70}
-                         deleteSpeed={50}
-                         delaySpeed={1000}/>
-                             <span className="text-[#c58f63]">
-                        <Typewriter
-                         words={['Tutor']}
-                         loop={2}
-                         cursor
-                         cursorStyle='_'
-                         typeSpeed={70}
-                         deleteSpeed={50}
-                         delaySpeed={1000}/>
-                         </span> </h1>
-                        <p className="font-mono text-white hidden lg:block my-8 w-1/2 mx-auto text-center">Develop a well-structured curriculum that covers the fundamentals of photography as well as advanced techniques and specialized genres.
-                            Offer a variety of courses suitable for beginners, intermediate, and advanced learners.
-                            Include both theoretical and practical components in your courses to ensure a balanced learning experience.</p>
+                                words={['Best Photography']}
+                                loop={2}
+                                cursor
+                                cursorStyle='_'
+                                typeSpeed={70}
+                                deleteSpeed={50}
+                                delaySpeed={1000} />
+                            <span className="text-[#c58f63]">
+                                <Typewriter
+                                    words={['Tutor']}
+                                    loop={2}
+                                    cursor
+                                    cursorStyle='_'
+                                    typeSpeed={70}
+                                    deleteSpeed={50}
+                                    delaySpeed={1000} />
+                            </span> </h1>
+                        <Bounce>
+                            <p className="font-mono text-white hidden lg:block my-8 w-1/2 mx-auto text-center">Develop a well-structured curriculum that covers the fundamentals of photography as well as advanced techniques and specialized genres.
+                                Offer a variety of courses suitable for beginners, intermediate, and advanced learners.
+                                Include both theoretical and practical components in your courses to ensure a balanced learning experience.</p>
+                        </Bounce>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide className="relative">

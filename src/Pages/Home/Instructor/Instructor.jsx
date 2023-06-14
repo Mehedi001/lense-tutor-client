@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './Instructor.css'
 import { BiLandscape } from 'react-icons/Bi';
+import { Fade } from 'react-awesome-reveal';
 
 
 const Instructor = () => {
@@ -10,7 +11,7 @@ const Instructor = () => {
 
     useEffect(() => {
         
-        fetch('http://localhost:5000/users?role=instructor')
+        fetch('https://lense-tutor-server.vercel.app/users?role=instructor')
             
             .then(res => res.json())
             .then(data => {
@@ -23,7 +24,8 @@ const Instructor = () => {
    
 
     return (
-        <div className='bg-gray-800 p-8'>
+        <Fade>
+            <div className='bg-gray-800 p-8'>
             <h1 className="text-4xl font-light  my-4 text-[#c58f63]">Our hard working Instructor:</h1>
             <div className="cards flex flex-wrap justify-center ">
 
@@ -47,6 +49,7 @@ const Instructor = () => {
 
             </div>
         </div>
+        </Fade>
     );
 };
 

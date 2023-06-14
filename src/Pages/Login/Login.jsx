@@ -29,7 +29,31 @@ const Login = () => {
                 const loggedInUser = result.user;
                 if (!loggedInUser) {
                     setError('Please Check Your email & password')
-                }
+                 }
+
+                 const newUser = { name:loggedInUser.displayName, role:'Student', email:loggedInUser.email, photo:loggedInUser.photoURL};
+
+                 fetch('https://lense-tutor-server.vercel.app/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(newUser)
+                        })
+
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'Registration Successfully',
+                                        icon: 'success',
+                                        confirmButtonText: 'Thank you'
+                                    })
+                                    form.reset('');
+                                }
+                            })
+
                 setSuccess('User Login Successfull');
                 setError('');
                 navigate(from, { replace: true });

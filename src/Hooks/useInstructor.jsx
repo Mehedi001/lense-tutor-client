@@ -9,7 +9,7 @@ const useInstructor = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/instructor?email=${email}`)
+            fetch(`https://lense-tutor-server.vercel.app/users/instructor?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     setIsInstructor(data.isInstructor)

@@ -10,7 +10,7 @@ const ManageUsers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user');
+            const res = await fetch('https://lense-tutor-server.vercel.app/user');
             const data = await res.json();
             return data;
         }
@@ -31,7 +31,7 @@ const ManageUsers = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/user/${id}`, {
+                fetch(`https://lense-tutor-server.vercel.app/user/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -70,7 +70,7 @@ const ManageUsers = () => {
     }
 
     const updateRole = (updateUser, id) => {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://lense-tutor-server.vercel.app/user/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

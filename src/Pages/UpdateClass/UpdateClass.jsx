@@ -32,7 +32,7 @@ export const UpdateClass = () => {
         // send data to the server
 
 
-        fetch(`http://localhost:5000/class/${data._id}`, {
+        fetch(`https://lense-tutor-server.vercel.app/class/${data._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

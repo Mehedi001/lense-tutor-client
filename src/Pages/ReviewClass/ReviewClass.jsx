@@ -9,7 +9,7 @@ const ReviewClass = () => {
     const { data: classes = [], refetch } = useQuery({
         queryKey: ['classes'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allClass');
+            const res = await fetch('https://lense-tutor-server.vercel.app/allClass');
             const data = await res.json();
             return data;
         }
@@ -25,7 +25,7 @@ const ReviewClass = () => {
     }
 
     const updateStatus = (updatedStatus, id) => {
-        fetch(`http://localhost:5000/classStatus/${id}`, {
+        fetch(`https://lense-tutor-server.vercel.app/classStatus/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -63,7 +63,7 @@ const ReviewClass = () => {
 
         if (text) {
             const updatedFeedback={feedback:text}
-            fetch(`http://localhost:5000/feedbackStatus/${id}`, {
+            fetch(`https://lense-tutor-server.vercel.app/feedbackStatus/${id}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
