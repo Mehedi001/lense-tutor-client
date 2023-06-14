@@ -10,7 +10,7 @@ const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext);
     const location = useLocation();
     if (loading) {
-        return (<div className='my-48'><ImSpinner4 className='text-9xl mx-auto animate-spin '/></div>)
+        return (<div className='my-48'><ImSpinner4 className='text-9xl text-red-700 mx-auto animate-spin '/></div>)
     }
     if (user) {
         return children;

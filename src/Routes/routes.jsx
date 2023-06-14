@@ -18,6 +18,10 @@ import AddedToCart from "../Pages/AddedtoCart/AddedToCart";
 import ManageUser from "../Pages/Home/ManageUser/ManageUser";
 import ReviewClass from "../Pages/ReviewClass/ReviewClass";
 import PrivateRoute from "./PrivateRoutes";
+import Info from "../Pages/Dashboard/Info";
+import AdminRoute from "./AdminRoute/AdminRoute";
+import InstructorRoute from "./InstructorRoute/InstructorRoute";
+import StudentRoute from "./StudentRoute/StudentRoute";
 
 
 
@@ -52,7 +56,7 @@ import PrivateRoute from "./PrivateRoutes";
         },
         {
           path:"/classlist/:id",
-          element: <PrivateRoute><ClassList></ClassList></PrivateRoute>,
+          element: <PrivateRoute><StudentRoute><ClassList></ClassList></StudentRoute></PrivateRoute>,
           loader: async ({ params }) => {
             return fetch(`http://localhost:5000/class/${params.id}`)
           }
@@ -70,12 +74,16 @@ import PrivateRoute from "./PrivateRoutes";
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
         children: [
             {
+                path:'info',
+                element: <PrivateRoute><Info></Info></PrivateRoute>
+            },
+            {
                 path:'addclass',
-                element: <PrivateRoute><AddClass></AddClass></PrivateRoute>
+                element: <PrivateRoute><InstructorRoute><AddClass></AddClass></InstructorRoute></PrivateRoute>
             },
             {
                 path:'myclass',
-                element: <PrivateRoute><MyClass></MyClass></PrivateRoute>
+                element: <PrivateRoute><InstructorRoute><MyClass></MyClass></InstructorRoute></PrivateRoute>
             },
             {
               path:"cart",
@@ -91,13 +99,13 @@ import PrivateRoute from "./PrivateRoutes";
             },
             {
               path:"manageUser",
-              element: <PrivateRoute><ManageUser></ManageUser></PrivateRoute>
+              element: <PrivateRoute><AdminRoute><ManageUser></ManageUser></AdminRoute></PrivateRoute>
             },
             {
               path:"reviewClass",
-              element: <PrivateRoute><ReviewClass></ReviewClass></PrivateRoute>
+              element: <PrivateRoute><AdminRoute><ReviewClass></ReviewClass></AdminRoute></PrivateRoute>
             }
-            
+        
         ]
     }
   ]);
