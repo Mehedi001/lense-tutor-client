@@ -11,7 +11,7 @@ const ClassList = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => {
         const newOrder = {courseName:datapata.className, status:"Not Paid", studentName:data.studentName, studentEmail:data.mail }
-        fetch('http://localhost:5000/order', {
+        fetch('https://lense-tutor-server.vercel.app/order', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
