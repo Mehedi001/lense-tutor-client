@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
@@ -152,7 +152,7 @@ const AddedToCart = () => {
                     </div>
                 </div> : <div className="  p-10 h-screen">
                     <div className=" flex flex-col justify-center items-center gap-4">
-                        <h1 className="text-3xl text-white">You Don't Added Any Courses</h1>
+                        <h1 className="text-3xl text-white">You Do not Added Any Courses</h1>
                         <Link className="btn border-0 text-white bg-red-700 hover:bg-red-900" to='/classes'>Browse Course</Link>
                     </div>
                 </div>
