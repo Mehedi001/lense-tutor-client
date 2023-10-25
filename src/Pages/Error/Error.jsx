@@ -3,7 +3,7 @@
 import { Helmet } from "react-helmet";
 import './Error.css'
 import { Link } from "react-router-dom";
-import { FaHome} from "react-icons/Fa"
+import { FaHome} from "react-icons/fa"
 
 const Error = () => {
 
