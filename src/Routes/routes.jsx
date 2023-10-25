@@ -14,7 +14,7 @@ import Classes from "../Pages/Classes/Classes";
 import MyClass from "../Pages/MyClass/MyClass";
 import UpdateClass from "../Pages/UpdateClass/UpdateClass";
 import ClassList from "../Pages/ClassList/ClassList";
-import AddedToCart from "../Pages/AddedtoCart/AddedToCart";
+import AddedToCart from "../Pages/AddedToCart/AddedToCart";
 import ManageUser from "../Pages/Home/ManageUser/ManageUser";
 import ReviewClass from "../Pages/ReviewClass/ReviewClass";
 import PrivateRoute from "./PrivateRoutes";
