@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import './Instructors.css'
-import { BiLandscape } from 'react-icons/Bi';
+import { BiLandscape } from 'react-icons/bi';
 import { Helmet } from "react-helmet";
 import { Parallax } from "react-parallax";
 import { useContext } from "react";

@@ -6,7 +6,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "./Gallery.css"
 import { EffectCoverflow, Pagination } from "swiper";
-import {FaCheckCircle} from "react-icons/Fa"
+import {FaCheckCircle} from "react-icons/fa"
 import { Slide } from "react-awesome-reveal";
 
 const Gallery = () => {

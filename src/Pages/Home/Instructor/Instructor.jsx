@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Instructor.css'
-import { BiLandscape } from 'react-icons/Bi';
+import { BiLandscape } from 'react-icons/bi';
 import { Fade } from 'react-awesome-reveal';
 
 

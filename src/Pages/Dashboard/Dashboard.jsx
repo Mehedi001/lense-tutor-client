@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { Link, Outlet } from "react-router-dom";
-import { FaArrowRight, FaHome, FaPlusCircle, FaUserCheck } from "react-icons/Fa";
+import { FaArrowRight, FaHome, FaPlusCircle, FaUserCheck } from "react-icons/fa";
 import { Helmet } from "react-helmet";
-import { BiBook, BiCart } from "react-icons/Bi";
+import { BiBook, BiCart } from "react-icons/bi";
 import useAdmin from "../../Hooks/useAdmin";
 import useInstructor from "../../Hooks/useInstructor";
 import useStudent from "../../Hooks/useStudent";

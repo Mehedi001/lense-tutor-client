@@ -8,7 +8,7 @@ import { useContext, useState } from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import app from '../../firebase/firebase.config';
-import {FcGoogle} from 'react-icons/Fc'
+import {FcGoogle} from 'react-icons/fc'
 import { Helmet } from 'react-helmet';
 
 
